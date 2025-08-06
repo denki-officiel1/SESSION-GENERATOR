@@ -2,142 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WASI TECH BOT </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="" type="image/x-icon">
   <style>
     body {
+      background-color: red;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background: linear-gradient(45deg, #000000, #1a1a1a, #2d0066, #4d0099);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      font-family: 'Poppins', sans-serif;
-      color: #ffffff;
-      overflow: hidden;
+      color: white;-
+    }
+
+    {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://railway.app",
+            "logo": "https://files.catbox.moe/hlvtf8.jpg"
+    }
+
+    .button-container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h3 {
+      margin-top: -40px;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+    }
+
+    .button {
+      width: 140px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0px 15px;
+      background-color: yellow;
+      border-radius: 10px;
+      border: none;
+      color: white;
       position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 0, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.15) 0%, transparent 40%);
-      filter: blur(30px);
-      z-index: -1;
-    }
-
-    @keyframes gradientBG {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    .btn {
-      --color: #00ff88;
-      --color2: #1a1a1a;
-      width: 250px;
-      padding: 1em 2em;
-      background: linear-gradient(45deg, #00cc69, #00ff88);
-      border-radius: 25px;
-      border: 2px solid var(--color);
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
       cursor: pointer;
-      z-index: 1;
-      font-weight: 500;
-      font-size: 16px;
-      font-family: 'Poppins', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--color2);
-      margin-bottom: 20px;
-      backdrop-filter: blur(5px);
+      font-weight: 900;
+      transition-duration: .2s;
+      background: linear-gradient(0deg, #000, #272727);
+      text-decoration: none;
     }
 
-    .btn::after, .btn::before {
+  
+    footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222; /* Darker gray footer background */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    
+  }
+    .button:before, .button:after {
       content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      transform: skew(90deg) translate(-50%, -50%);
       position: absolute;
-      inset: 50%;
-      left: 25%;
+      left: -2px;
+      top: -2px;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #48ff00, #15ff00, #000000,#000000, #ff0000);
+      background-size: 400%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
       z-index: -1;
-      transition: .5s ease-out;
-      background-color: var(--color);
+      animation: steam 10s linear infinite;
     }
 
-    .btn::before {
-      top: -50%;
-      left: -25%;
-      transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
-      animation: buttonPulse 2s infinite;
-    }
-
-    @keyframes buttonPulse {
+    @keyframes steam {
       0% {
-        transform: skew(90deg) rotate(180deg) translate(-50%, -50%) scale(1);
-        opacity: 1;
+        background-position: 0 0;
       }
+
       50% {
-        transform: skew(90deg) rotate(180deg) translate(-50%, -50%) scale(1.1);
-        opacity: 0.8;
+        background-position: 400% 0;
       }
+
       100% {
-        transform: skew(90deg) rotate(180deg) translate(-50%, -50%) scale(1);
+        background-position: 0 0;
+      }
+    }
+
+    .button:after {
+      filter: blur(50px);
+    }
+
+    .button span {
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      to {
         opacity: 1;
       }
-    }
-
-    .btn:hover::before {
-      transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
-    }
-
-    .btn:hover::after {
-      transform: skew(45deg) translate(-50%, -50%);
-    }
-
-    .btn:hover {
-      color: var(--color2);
-    }
-
-    .btn:active {
-      filter: brightness(.7);
-      transform: scale(.98);
     }
   </style>
 </head>
 <body>
-  <div style="text-align: center; margin-bottom: 20px; color: #666;">
-    <div style="font-weight: bold; animation: float 3s ease-in-out infinite; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Created by Mr Wasi Dev</div>
-  </div>
+  <div class="button-container">
+    <h3> 𝗛𝗘𝗟𝗟𝗢 𝗙𝗥𝗜𝗘𝗡𝗗𝗦 👋</h3>
+    <div></div>
+    <a href="/wasiqr" class="button" target="_blank"> <span>𝚀𝚁-𝙲𝙾𝙳𝙴</span> </a> <br>
+    <a href="/pair" class="button" target="_blank"> <span>𝙿𝙰𝙸𝚁-𝙲𝙾𝙳𝙴</span> </a> <br>
+    <a href="https://github.com/denki-arch/DENKI-MD/fork" class="button" target="_blank"> <span>𝙵𝙾𝚁𝙺 𝚁𝙴𝙿𝙾</span> </a> <br> </a>
+    <a href="https://whatsapp.com/channel/0029VbA6MSYJUM2TVOzCSb2A" class="button" target="_blank"> <span> 𝙼𝚈 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 𝙲𝙷𝙰𝙽𝙽𝙴𝙻</span> </a> <br>
 
-  <button onclick="window.open(`/wasiqr`)" class="btn">QR Code</button>
-  <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
-  <button onclick="window.open(`https://github.com/Itxxwasi/WASI-MD-V`)" class="btn">Bot Repo</button>
-  <button onclick="window.open(`https://github.com/wasixd/WASI-MD-PLUGINS`)" class="btn">Plugins</button>
-  <button onclick="window.open(`https://wa.me/923192173398`)" class="btn">Contact Me</button>
-  <button onclick="window.open(`https://chat.whatsapp.com/L14FfkAgFCN9eXGe5Sqjqt`)" class="btn">Wa Group</button>
-  <button onclick="window.open(`https://whatsapp.com/channel/0029VaDK8ZUDjiOhwFS1cP2j`)" class="btn">Wa Channel</button>
-  <button onclick="window.open(`https://instagram.com/itx_mee_wasi`)" class="btn">Instagram</button>
-  <button onclick="window.open(`https://youtube.com/@wasitech1`)" class="btn">Youtube</button>
+    <p>𝙸𝙵 𝚈𝙾𝚄 𝙷𝙰𝚅𝙴 𝙰𝙽𝚈 𝙿𝚁𝙾𝙱𝙻𝙴𝙼𝚂
+     𝙲𝙻𝙸𝙲𝙺 𝚃𝙷𝙴 𝙾𝚆𝙽𝙴𝚁 𝙱𝚄𝚃𝚃𝙾𝙽 𝚃𝙾 
+     𝙲𝙾𝙽𝚃𝙰𝙲𝚃 𝙼𝙴  </p>
+
+    <a href="https://wa.me/2250143875869" class="button" target="_blank"> <span>𝙾𝚆𝙽𝙴𝚁 </span> </a> <br>
+
+    <footer>
+     DENKI-MD &copy; <span id="currentYear"></span>
+    </footer>
+  
 </body>
 </html>
